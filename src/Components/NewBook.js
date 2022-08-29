@@ -41,10 +41,10 @@ const NewBook = ({refetchBooks}) => {
         setNewPrice(event.target.value)
     }
 
-    const handleNewBoookSubmit = (event) => {
+    const handleNewBookSubmit = (event) => {
         event.preventDefault()
         axios.post(
-            "http://localhost:3000/animals",
+            "http://localhost:3003/books",
             {
                 title: newTitle,
                 image: newImage, 
@@ -55,6 +55,13 @@ const NewBook = ({refetchBooks}) => {
                 price: newPrice
             }
         ).then(()=> {
+            setNewTitle("")
+            setNewImage("")
+            setNewSynopsis("")
+            setNewGenre("")
+            setNewAudio("")
+            setNewLink("")
+            setNewPrice("")
             refetchBooks()
         })
     }
@@ -63,13 +70,13 @@ const NewBook = ({refetchBooks}) => {
         <section>
             <h2 className="header">Create a Book Listing</h2>
             <form className="form" onSubmit={handleNewBookSubmit}>
-                <input placeholder="Title" type="text" onChange={handleNewTitleChange} /><br />
-                <input placeholder="Image" type="text" onChange={handleNewImageChange} /><br />
-                <input placeholder="Synopsis" type="text" onChange={handleNewSynopsisChange} /><br />
-                <input placeholder="Genre" type="text" onChange={handleNewGenreChange} /><br />
-                Available as an AudioBook <input type="checkbox" defaultChecked={false} onChange={handleNewAudioChange} /><br />
-                <input placeholder="Link" type="text" onChange={handleNewLinkChange} /><br />
-                <input placeholder="Price" type="number" onChange={handleNewPriceChange} /><br />
+                <input placeholder="Title" type="text" onChange={handleNewTitleChange} value={newTitle} /><br />
+                <input placeholder="Image" type="text" onChange={handleNewImageChange} value={newImage} /><br />
+                <input placeholder="Synopsis" type="text" onChange={handleNewSynopsisChange} value={newSynopsis} /><br />
+                <input placeholder="Genre" type="text" onChange={handleNewGenreChange} value={newGenre}/><br />
+                Available as an AudioBook <input type="checkbox" defaultChecked={false} onChange={handleNewAudioChange} value={newAudio}/><br />
+                <input placeholder="Link" type="text" onChange={handleNewLinkChange} value={newLink}/><br />
+                <input placeholder="Price" type="number" onChange={handleNewPriceChange} value={newPrice}/><br />
                 <input className="btn btn-outline-secondary" type="submit" value="submit Book" />
             </form>
         </section>
