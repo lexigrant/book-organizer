@@ -1,26 +1,57 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
+import React from 'react'
+import {useState, useEffect} from "react"
+import axios from "axios"
+import Book from './Components/Book'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>hello world</p>
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+const App = () => {
+  const [books, setBooks] = useState([])
+  const [bookToEdit, setBookToEdit] = useState(undefined)
+
+  const refetchBooks = () => {
+    axios.get("http://localhost:3003/books")
+    .then((response) => {
+      setBooks(response.data)
+    })
+  }
+  const handleDelete = (bookData) => {
+    axios.delete(`http://localhost:3003/books/${bookData._id}`)
+    .then(() => {
+      refetchBooks()
+    })
+  }
+  const handleEdit = (bookData) => {
+    setBookToEdit(bookData)
+  }
+  useEffect(() => {
+    axios.get("http://localhost:3003/books")
+    .then((response) => {
+      setBooks(response.data)
+    })
+  }, [])
+
+  return(
+    <main>
+      <h1>Book Organizer</h1>
+      <></>
+      <section>
+        <h2>Books to Add</h2>
+        <ul>
+          <div className="container">
+            <div className="row">
+              {books.map((book) => {
+                return(
+                 <Book book={book} handleDelete={handleDelete} handleEdit={handleEdit} />
+                )
+              })}
+            </div>
+          </div>
+        </ul>
+        <></>
+      </section>
+    </main>
+  )
 }
 
 export default App;
