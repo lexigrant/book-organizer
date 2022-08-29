@@ -55,7 +55,7 @@ const App = () => {
             </div>
           </div>
         </ul>
-        <></>
+        <EditBook/>
       </section>
     </main>
   )
