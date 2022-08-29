@@ -14,6 +14,7 @@ const EditBook = ({refetchBooks, bookToEdit, showEditModal, closeEditModal}) => 
     const [editLink, setEditLink] = useState("")
     const [editPrice, setEditPrice] = useState(Number)
     const [editId, setEditId] = useState("")
+    
 
     const handleEditTitleChange = (event) => {
         setEditTitle(event.target.value)
@@ -43,7 +44,7 @@ const EditBook = ({refetchBooks, bookToEdit, showEditModal, closeEditModal}) => 
         setEditPrice(event.target.value)
     }
 
-
+    
     const handleEditBookSubmit = (event) => {
         event.preventDefault()
         axios.put(
@@ -64,6 +65,7 @@ const EditBook = ({refetchBooks, bookToEdit, showEditModal, closeEditModal}) => 
     }
 
     const populatedEditForm = (bookData) => {
+        console.log("hey", bookData)
             setEditTitle(bookData.title)
             setEditImage(bookData.image) 
             setEditSynopsis(bookData.synopsis)
@@ -85,13 +87,13 @@ const EditBook = ({refetchBooks, bookToEdit, showEditModal, closeEditModal}) => 
           }}>Exit</button>
     
             <form className="form" onSubmit={handleEditBookSubmit}>
-                <input placeholder="Title" type="text" onChange={handleEditTitleChange} /><br />
-                <input placeholder="Image" type="text" onChange={handleEditImageChange} /><br />
-                <input placeholder="Synopsis" type="text" onChange={handleEditSynopsisChange} /><br />
-                <input placeholder="Genre" type="text" onChange={handleEditGenreChange} /><br />
-                Available as an AudioBook <input type="checkbox" defaultChecked={false} onChange={handleEditAudioChange} /><br />
-                <input placeholder="Link" type="text" onChange={handleEditLinkChange} /><br />
-                <input placeholder="Price" type="number" onChange={handleEditPriceChange} /><br />
+                <input placeholder="Title" type="text" onChange={handleEditTitleChange} value={editTitle} /><br />
+                <input placeholder="Image" type="text" onChange={handleEditImageChange} value={editImage} /><br />
+                <input placeholder="Synopsis" type="text" onChange={handleEditSynopsisChange} value={editSynopsis} /><br />
+                <input placeholder="Genre" type="text" onChange={handleEditGenreChange} value={editGenre} /><br />
+                Available as an AudioBook <input type="checkbox" defaultChecked={false} onChange={handleEditAudioChange} value={editAudio} /><br />
+                <input placeholder="Link" type="text" onChange={handleEditLinkChange} value={editLink} /><br />
+                <input placeholder="Price" type="number" onChange={handleEditPriceChange} value={editPrice} /><br />
                 <input className="btn btn-outline-secondary" type="submit" value="submit Book" />
             </form>
         </ReactModal>

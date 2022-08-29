@@ -5,13 +5,16 @@ import axios from "axios"
 import Book from './Components/Book'
 import NewBook from './Components/NewBook'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import EditBook from './Components/EditBook'
+import ReactModal from "react-modal"
 
 
 const App = () => {
   const [books, setBooks] = useState([])
   const [bookToEdit, setBookToEdit] = useState(undefined)
-  
   const [showEditModal, setShowEditModal] = useState(false)
+  
+  
 
   const refetchBooks = () => {
     axios.get("http://localhost:3003/books")
@@ -30,6 +33,7 @@ const App = () => {
   }
   const handleEdit = (bookData) => {
     setBookToEdit(bookData)
+    setShowEditModal(true)
   }
   useEffect(() => {
     axios.get("http://localhost:3003/books")
@@ -55,7 +59,7 @@ const App = () => {
             </div>
           </div>
         </ul>
-        <EditBook/>
+       {bookToEdit ? <EditBook refetchBooks={refetchBooks} bookToEdit={bookToEdit} showEditModal={showEditModal} closeEditModal={closeEditModal}/> : undefined}
       </section>
     </main>
   )

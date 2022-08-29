@@ -4,7 +4,7 @@ import ReactModal from "react-modal"
 const Book = ({ book, handleDelete, handleEdit }) => {
 
   const [showSynopsisModal, setShowSynopsisModal] = useState(false)
-  
+
   return (
     <>
       <div className="col-sm-4">
