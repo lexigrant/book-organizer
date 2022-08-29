@@ -36,3 +36,7 @@
     transform: rotate(360deg);
   }
 }
+.bookImage{
+  height: 10rem;
+  max-width: 15rem;
+}
