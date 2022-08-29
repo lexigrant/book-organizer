@@ -13,6 +13,7 @@ const EditBook = ({refetchBooks, bookToEdit, showEditModal, closeEditModal}) => 
     const [editAudio, setEditAudio] = useState(false)
     const [editLink, setEditLink] = useState("")
     const [editPrice, setEditPrice] = useState(Number)
+    const [editId, setEditId] = useState("")
 
     const handleEditTitleChange = (event) => {
         setEditTitle(event.target.value)
@@ -43,10 +44,10 @@ const EditBook = ({refetchBooks, bookToEdit, showEditModal, closeEditModal}) => 
     }
 
     
-    const handleEditBoookSubmit = (event) => {
+    const handleEditBookSubmit = (event) => {
         event.preventDefault()
         axios.put(
-            "http://localhost:3003/books/${editId}“,
+            `http://localhost:3003/books/${editId}`,
             {
                 title: editTitle,
                 image: editImage, 
@@ -63,13 +64,14 @@ const EditBook = ({refetchBooks, bookToEdit, showEditModal, closeEditModal}) => 
     }
 
     const populatedEditForm = (bookData) => {
-            setEditTitle(bookDatata.title)
+            setEditTitle(bookData.title)
             setEditImage(bookData.image) 
             setEditSynopsis(bookData.synopsis)
             setEditGenre(bookData.genre)
             setEditAudio(bookData.audio)
             setEditLink(bookData.link)
             setEditPrice(bookData.price)
+            setEditId(bookData._id)
 
     }
     useEffect(() => {

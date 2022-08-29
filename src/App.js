@@ -5,6 +5,7 @@ import axios from "axios"
 import Book from './Components/Book'
 import NewBook from './Components/NewBook'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import EditBook from './Components/EditBook'
 
 
 const App = () => {
@@ -55,7 +56,7 @@ const App = () => {
             </div>
           </div>
         </ul>
-        <></>
+        <EditBook />
       </section>
     </main>
   )
