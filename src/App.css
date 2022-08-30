@@ -40,3 +40,6 @@
   height: 10rem;
   max-width: 15rem;
 }
+ul {
+  list-style: none;
+}
