@@ -46,13 +46,13 @@ const NewBook = ({refetchBooks}) => {
         axios.post(
             "http://localhost:3003/books",
             {
-                title: newTitle,
-                image: newImage, 
-                synopsis: newSynopsis,
-                genre: newGenre,
-                audio: newAudio,
-                link: newLink,
-                price: newPrice
+                title:newTitle,
+                image:newImage, 
+                synopsis:newSynopsis,
+                genre:newGenre,
+                audio:newAudio,
+                link:newLink,
+                price:newPrice
             }
         ).then(()=> {
             setNewTitle("")
@@ -67,7 +67,7 @@ const NewBook = ({refetchBooks}) => {
     }
 
     return (
-        <section>
+        <section className="top">
             <h2 className="header">Create a Book Listing</h2>
             <form className="form" onSubmit={handleNewBookSubmit}>
                 <input placeholder="Title" type="text" onChange={handleNewTitleChange} value={newTitle} /><br />
@@ -77,7 +77,7 @@ const NewBook = ({refetchBooks}) => {
                 Available as an AudioBook <input type="checkbox" defaultChecked={false} onChange={handleNewAudioChange} value={newAudio}/><br />
                 <input placeholder="Link" type="text" onChange={handleNewLinkChange} value={newLink}/><br />
                 <input placeholder="Price" type="number" onChange={handleNewPriceChange} value={newPrice}/><br />
-                <input className="btn btn-outline-secondary" type="submit" value="submit Book" />
+                <input className="btn btn-outline-secondary submitbutton" type="submit" value="submit Book" />
             </form>
         </section>
     )
