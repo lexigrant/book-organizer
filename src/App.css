@@ -40,3 +40,47 @@
   height: 10rem;
   max-width: 15rem;
 }
+.container{
+  text-align: center;
+  list-style: none;
+  background:#242e42;
+  border-radius: 5%;
+  border: 2px solid #b1c8ce;
+}
+li{
+  background:#b1c8ce;
+  color: #242e42;
+  border-radius: 2px;;
+}
+.top{
+  text-align: center;
+  margin: 5%;
+  background:#242e42;
+  border-radius: 5%;
+  border: 2px solid #b1c8ce;
+  color:#b1c8ce;
+}
+h1{
+  text-align: center;
+}
+h2{
+  margin:3%;
+}
+.submitbutton{
+  margin:2%;
+}
+.header{
+  margin: 2%;;
+}
+.one{
+  border-radius: 5px;
+  margin: 2%;
+  
+}
+main{
+  background:#92daee;
+  color:#242e42;
+}
+
+/* edit form */
+

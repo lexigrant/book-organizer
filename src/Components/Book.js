@@ -13,12 +13,13 @@ const Book = ({ book, handleDelete, handleEdit }) => {
             <li key={book._id}>
               {book.title}<br />
               <img className="bookImage" src={book.image}></img><br />
-              <button onClick={()=> {
+              <button className="one" onClick={()=> {
                  setShowSynopsisModal(true)
               }}>Book Information</button>
-              <button onClick={() => {
+              <button className="one" onClick={() => {
                 handleDelete(book)
-              }}>Delete</button><button onClick={() => {
+              }}>Delete</button>
+              <button className="one" onClick={() => {
                 handleEdit(book)
               }}>Edit</button>
             </li>
@@ -31,7 +32,9 @@ const Book = ({ book, handleDelete, handleEdit }) => {
           {book.synopsis}<br />
           <details>
             <summary>Is there an AudioBook?</summary>
-            {book.audio ? <p>Yes</p> : <p>No</p>}
+            {book.audio ? 
+              <p>Yes</p> 
+            : <p>No</p>}
             {book.link}
           </details>
           {book.price}<br />
