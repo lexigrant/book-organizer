@@ -28,16 +28,19 @@ const Book = ({ book, handleDelete, handleEdit }) => {
       </div>
       <ReactModal isOpen={showSynopsisModal}>
         <div>
-          {book.genre}<br />
-          {book.synopsis}<br />
+          Genre: {book.genre}<br />
+          Synopsis: {book.synopsis}<br />
           <details>
             <summary>Is there an AudioBook?</summary>
             {book.audio ? 
-              <p>Yes</p> 
+            
+              <div><p>Yes</p> 
+              <button id="media"><a href={book.link}>click for audible</a></button></div>
             : <p>No</p>}
-            {book.link}
+             
+            
           </details>
-          {book.price}<br />
+          Book price: ${book.price}<br />
         </div>
         <button onClick={()=>{ setShowSynopsisModal(false)}}> close </button>
       </ReactModal>
