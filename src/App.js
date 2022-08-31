@@ -91,7 +91,7 @@ const App = () => {
         <ul>
           <Carousel activeIndex={index} >
             <div className="container">
-              <div className="row">
+              <div className="row justify-content-center">
                 {books.slice(0,6).map((book) => {
                   return (
                     // if book.genre === activeCategory then make the book

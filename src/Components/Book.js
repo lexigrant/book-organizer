@@ -1,6 +1,9 @@
 import React, { useState } from "react"
+import { Card, Container, Col, Button } from "react-bootstrap"
 import ReactModal from "react-modal"
 import { Carousel } from "react-bootstrap"
+
+
 
 const Book = ({ book, handleDelete, handleEdit }) => {
 
@@ -8,25 +11,30 @@ const Book = ({ book, handleDelete, handleEdit }) => {
 
   return (
     <>
-      <div className="col-sm-4">
-        <div className="card" >
-          <div className="card-block">
-            <li key={book._id}>
-              {book.title}<br />
-              <img className="bookImage" src={book.image}></img><br />
-              <button className="one" onClick={()=> {
+    
+          
+          
+          <Card className="card m-3" style={{width:'18rem'}}>  
+            <p key={book._id}>
+              <Card.Title style={{height:"80px", marginTop:"20px"}}>{book.title}<br /></Card.Title>
+              <Card.Img variant="top" src={book.image} style={{height:"300px"}}/><br />
+              <Card.Body>
+              <Button className="one" onClick={()=> {
                  setShowSynopsisModal(true)
-              }}>Book Information</button>
-              <button className="one" onClick={() => {
+              }}>Book Information</Button>
+              <Button className="one" onClick={() => {
                 handleDelete(book)
-              }}>Delete</button>
-              <button className="one" onClick={() => {
+              }}>Delete</Button>
+              <Button className="one" onClick={() => {
                 handleEdit(book)
-              }}>Edit</button>
-            </li>
-          </div>
-        </div>
-      </div>
+              }}>Edit</Button>
+              </Card.Body>
+            </p>
+            </Card>
+            
+           
+          
+    
       <ReactModal isOpen={showSynopsisModal}>
         <div>
           Genre: {book.genre}<br />
