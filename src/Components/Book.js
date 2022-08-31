@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import ReactModal from "react-modal"
+import { Carousel } from "react-bootstrap"
 
 const Book = ({ book, handleDelete, handleEdit }) => {
 
@@ -42,7 +43,7 @@ const Book = ({ book, handleDelete, handleEdit }) => {
           </details>
           Book price: ${book.price}<br />
         </div>
-        <button onClick={()=>{ setShowSynopsisModal(false)}}> close </button>
+        <button onClick={()=>{ setShowSynopsisModal(false)}}>close</button>
       </ReactModal>
     </>
   )

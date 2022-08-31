@@ -7,6 +7,7 @@ import NewBook from './Components/NewBook'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import EditBook from './Components/EditBook'
 import Dropdown from 'react-bootstrap/Dropdown'
+import { Carousel } from "react-bootstrap"
 // require('dotenv').config()
 const API_URL = process.env.REACT_APP_API_URL
 
@@ -16,7 +17,11 @@ const App = () => {
   const [bookToEdit, setBookToEdit] = useState(undefined)
   const [showEditModal, setShowEditModal] = useState(false)
   const [activeCategory, setActiveCategory] = useState("")
+  const [index, setIndex] = useState(0)
 
+  const handleSelect = (selectIndex) => {
+    setIndex(selectIndex)
+  }
 
 
   const refetchBooks = () => {
@@ -78,20 +83,25 @@ const App = () => {
             <Dropdown.Item className="dropdown-item" href="#" onClick={() => {
               setActiveCategory("Spiritual")
             }}>Spiritual</Dropdown.Item>
+            <Dropdown.Item className="dropdown-item" href="#" onClick={() => {
+              setActiveCategory("Thriller")
+            }}>Thriller</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
         <ul>
-          <div className="container">
-            <div className="row">
-              {books.map((book) => {
-                return (
-                  // if book.genre === activeCategory then make the book
-                  // else dont
-                  book.genre === activeCategory || activeCategory === "" ? <Book book={book} handleDelete={handleDelete} handleEdit={handleEdit} /> : undefined
-                )
-              })}
+          <Carousel activeIndex={index} >
+            <div className="container">
+              <div className="row">
+                {books.slice(0,6).map((book) => {
+                  return (
+                    // if book.genre === activeCategory then make the book
+                    // else dont
+                    book.genre === activeCategory || activeCategory === "" ? <Book book={book} handleDelete={handleDelete} handleEdit={handleEdit} /> : undefined
+                  )
+                })}
+              </div>
             </div>
-          </div>
+          </Carousel>
         </ul>
         {bookToEdit ? <EditBook refetchBooks={refetchBooks} bookToEdit={bookToEdit} showEditModal={showEditModal} closeEditModal={closeEditModal} /> : undefined}
       </section>
