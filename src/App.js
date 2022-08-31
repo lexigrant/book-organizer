@@ -14,8 +14,7 @@ const App = () => {
   const [bookToEdit, setBookToEdit] = useState(undefined)
   const [showEditModal, setShowEditModal] = useState(false)
   const [activeCategory, setActiveCategory] = useState("")
-
-
+  
 
   const refetchBooks = () => {
     axios.get("http://localhost:3003/books")
@@ -80,7 +79,7 @@ const App = () => {
         </Dropdown>
         <ul>
           <div className="container">
-            <div className="row">
+            <div className="row justify-content-center">
               {books.map((book) => {
                 return (
                   // if book.genre === activeCategory then make the book

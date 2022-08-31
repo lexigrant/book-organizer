@@ -102,10 +102,14 @@ main{
   /* margin: 5px; */
 }
 .card {
-  height: 15rem !important;
-  width: 40rem !important;
+  /* display: flex;
+  flex-wrap: column wrap;
+  justify-content: center; */
+  /* height: 15rem !important;
+  width: 40rem !important; */
   /* max-height: max-content !important; */
 }
 
 /* edit form */
 
+/* book.js */
