@@ -8,7 +8,7 @@ const Book = ({ book, handleDelete, handleEdit }) => {
   return (
     <>
       <div className="col-sm-4">
-        <div className="card">
+        <div className="card" >
           <div className="card-block">
             <li key={book._id}>
               {book.title}<br />

@@ -13,7 +13,7 @@ const App = () => {
   const [books, setBooks] = useState([])
   const [bookToEdit, setBookToEdit] = useState(undefined)
   const [showEditModal, setShowEditModal] = useState(false)
-  const [activeRoute, setActiveRoute] = useState("")
+  const [activeCategory, setActiveCategory] = useState("")
 
 
 
@@ -50,11 +50,32 @@ const App = () => {
       <section>
         <h2>Books Added</h2>
         <Dropdown>
-          <Dropdown.Toggle variant="success">Categories</Dropdown.Toggle>
+          <Dropdown.Toggle variant="secondary">Categories</Dropdown.Toggle>
           <Dropdown.Menu>
-            <Dropdown.Item className="dropdown-item" href="#">Fantasy</Dropdown.Item>
-            <Dropdown.Item className="dropdown-item" href="#">Romance</Dropdown.Item>
-            <Dropdown.Item className="dropdown-item" href="#">Science Fiction</Dropdown.Item>
+            <Dropdown.Item className="dropdown-item" href="#" onClick={() => {
+              setActiveCategory("")
+            }}>All</Dropdown.Item>
+            <Dropdown.Item className="dropdown-item" href="#" onClick={() => {
+              setActiveCategory("Fantasy")
+            }}>Fantasy</Dropdown.Item>
+            <Dropdown.Item className="dropdown-item" href="#" onClick={() => {
+              setActiveCategory("Fiction")
+            }}>Fiction</Dropdown.Item>
+            <Dropdown.Item className="dropdown-item" href="#" onClick={() => {
+              setActiveCategory("Literary Fiction")
+            }}>Literary Fiction</Dropdown.Item>
+            <Dropdown.Item className="dropdown-item" href="#" onClick={() => {
+              setActiveCategory("Romance")
+            }}>Romance</Dropdown.Item>
+            <Dropdown.Item className="dropdown-item" href="#" onClick={() => {
+              setActiveCategory("Self-Help")
+            }}>Self-Help</Dropdown.Item>
+            <Dropdown.Item className="dropdown-item" href="#" onClick={() => {
+              setActiveCategory("Science Fiction")
+            }}>Science Fiction</Dropdown.Item>
+            <Dropdown.Item className="dropdown-item" href="#" onClick={() => {
+              setActiveCategory("Spiritual")
+            }}>Spiritual</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
         <ul>
@@ -62,7 +83,9 @@ const App = () => {
             <div className="row">
               {books.map((book) => {
                 return (
-                  <Book book={book} handleDelete={handleDelete} handleEdit={handleEdit} />
+                  // if book.genre === activeCategory then make the book
+                  // else dont
+                  book.genre === activeCategory || activeCategory === "" ? <Book book={book} handleDelete={handleDelete} handleEdit={handleEdit} /> : undefined
                 )
               })}
             </div>
