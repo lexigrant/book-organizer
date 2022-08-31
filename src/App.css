@@ -59,7 +59,7 @@ li{
   text-align: center;
   margin: 5%;
   background:#242e42;
-  border-radius: 5%;
+  border-radius: 2%;
   border: 2px solid #b1c8ce;
   color:#b1c8ce;
 }
@@ -83,6 +83,15 @@ h2{
 main{
   background:#92daee;
   color:#242e42;
+}
+.col-sm-4 {
+  display: flex;
+  /* margin: 5px; */
+}
+.card {
+  height: 15rem !important;
+  width: 40rem !important;
+  /* max-height: max-content !important; */
 }
 
 /* edit form */
