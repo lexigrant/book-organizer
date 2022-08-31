@@ -7,6 +7,8 @@ import NewBook from './Components/NewBook'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import EditBook from './Components/EditBook'
 import Dropdown from 'react-bootstrap/Dropdown'
+// require('dotenv').config()
+const API_URL = process.env.REACT_APP_API_URL
 
 
 const App = () => {
@@ -18,13 +20,13 @@ const App = () => {
 
 
   const refetchBooks = () => {
-    axios.get("http://localhost:3003/books")
+    axios.get(`${API_URL}/books`)
       .then((response) => {
         setBooks(response.data)
       })
   }
   const handleDelete = (bookData) => {
-    axios.delete(`http://localhost:3003/books/${bookData._id}`)
+    axios.delete(`${API_URL}/${bookData._id}`)
       .then(() => {
         refetchBooks()
       })
@@ -37,7 +39,7 @@ const App = () => {
     setShowEditModal(true)
   }
   useEffect(() => {
-    axios.get("http://localhost:3003/books")
+    axios.get(`${API_URL}/books`)
       .then((response) => {
         setBooks(response.data)
       })
