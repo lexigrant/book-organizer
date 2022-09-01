@@ -47,9 +47,9 @@ const Book = ({ book, handleDelete, handleEdit }) => {
               <button id="media"><a href={book.link}>click for audible</a></button></div>
             : <p>No</p>}
              
-            
           </details>
           Book price: ${book.price}<br />
+          <div><button id="media"><a href={book.purchase}>click to purchase</a></button></div>
         </div>
         <button onClick={()=>{ setShowSynopsisModal(false)}}>close</button>
       </ReactModal>

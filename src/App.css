@@ -66,7 +66,7 @@ li{
   opacity: .8;
   border-radius: 5%;
   border: 2px solid #b1c8ce;
-  color:#b1c8ce;
+  color:#eff6f7;
 }
 
 input{
@@ -87,7 +87,10 @@ h2{
   margin:2%;
 }
 .header{
-  margin: 2%;;
+  margin: 2%;
+  color:#b1c8ce;
+  text-shadow: 2px 2px #242e42;
+  
 }
 .one{
   border-radius: 5px;
@@ -119,7 +122,17 @@ main{
 
 }
 
+/* newbook */
+.audiobook{
+  /* background: #b1c8ce; */
+  color:#b1c8ce;
+  text-shadow: 2px 2px #242e42;
+  
+}
 
 /* edit form */
 
 /* book.js */
+.card{
+  background: #b1c8ce;
+}
