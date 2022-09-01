@@ -12,6 +12,7 @@ const NewBook = ({refetchBooks}) => {
     const [newGenre, setNewGenre] = useState("")
     const [newAudio, setNewAudio] = useState(false)
     const [newLink, setNewLink] = useState("")
+    const [newPurchase, setNewPurchase] = useState("")
     const [newPrice, setNewPrice] = useState(Number)
 
     const handleNewTitleChange = (event) => {
@@ -38,6 +39,10 @@ const NewBook = ({refetchBooks}) => {
         setNewLink(event.target.value)
     }
 
+    const handleNewPurchaseChange = (event) => {
+        setNewPurchase(event.target.value)
+    }
+
     const handleNewPriceChange = (event) => {
         setNewPrice(event.target.value)
     }
@@ -53,6 +58,7 @@ const NewBook = ({refetchBooks}) => {
                 genre:newGenre,
                 audio:newAudio,
                 link:newLink,
+                purchase:newPurchase,
                 price:newPrice
             }
         ).then(()=> {
@@ -62,6 +68,7 @@ const NewBook = ({refetchBooks}) => {
             setNewGenre("")
             setNewAudio("")
             setNewLink("")
+            setNewPurchase("")
             setNewPrice("")
             refetchBooks()
         })
@@ -69,15 +76,16 @@ const NewBook = ({refetchBooks}) => {
 
     return (
         <section className="top">
-            <h2 className="header">Create a Book Listing</h2>
+            <h1 className="header">Create a Book Listing</h1>
             <form className="form" onSubmit={handleNewBookSubmit}>
                 <input placeholder="Title" type="text" onChange={handleNewTitleChange} value={newTitle} /><br />
                 <input placeholder="Image" type="text" onChange={handleNewImageChange} value={newImage} /><br />
                 <input placeholder="Synopsis" type="text" onChange={handleNewSynopsisChange} value={newSynopsis} /><br />
                 <input placeholder="Genre" type="text" onChange={handleNewGenreChange} value={newGenre}/><br />
-                Available as an AudioBook <input type="checkbox" defaultChecked={false} onChange={handleNewAudioChange} value={newAudio}/><br />
+                <h2 className="audiobook">Available as an AudioBook</h2> <input type="checkbox" defaultChecked={false} onChange={handleNewAudioChange} value={newAudio}/><br />
                 <input placeholder="Link" type="text" onChange={handleNewLinkChange} value={newLink}/><br />
                 <input placeholder="Price" type="number" onChange={handleNewPriceChange} value={newPrice}/><br />
+                <input placeholder="Purchase Link" type="text" onChange={handleNewPurchaseChange} value={newPurchase}/><br/>
                 <input className="btn btn-outline-secondary submitbutton" type="submit" value="submit Book" />
             </form>
         </section>

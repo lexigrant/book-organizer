@@ -13,6 +13,7 @@ const EditBook = ({refetchBooks, bookToEdit, showEditModal, closeEditModal}) => 
     const [editGenre, setEditGenre] = useState("")
     const [editAudio, setEditAudio] = useState(false)
     const [editLink, setEditLink] = useState("")
+    const [editPurchase, setEditPurchase] = useState("")
     const [editPrice, setEditPrice] = useState(Number)
     const [editId, setEditId] = useState("")
     
@@ -41,6 +42,10 @@ const EditBook = ({refetchBooks, bookToEdit, showEditModal, closeEditModal}) => 
         setEditLink(event.target.value)
     }
 
+    const handleEditPurchaseChange = (event) => {
+        setEditPurchase(event.target.value)
+    }
+
     const handleEditPriceChange = (event) => {
         setEditPrice(event.target.value)
     }
@@ -57,6 +62,7 @@ const EditBook = ({refetchBooks, bookToEdit, showEditModal, closeEditModal}) => 
                 genre: editGenre,
                 audio: editAudio,
                 link: editLink,
+                purchase: editPurchase,
                 price: editPrice
             }
         ).then(()=> {
@@ -73,6 +79,7 @@ const EditBook = ({refetchBooks, bookToEdit, showEditModal, closeEditModal}) => 
             setEditAudio(bookData.audio)
             setEditLink(bookData.link)
             setEditPrice(bookData.price)
+            setEditPurchase(bookData.purchase)
             setEditId(bookData._id)
 
     }
@@ -95,6 +102,7 @@ const EditBook = ({refetchBooks, bookToEdit, showEditModal, closeEditModal}) => 
                 Available as an AudioBook <input type="checkbox" defaultChecked={false} onChange={handleEditAudioChange} value={editAudio} /><br />
                 <input placeholder="Link" type="text" onChange={handleEditLinkChange} value={editLink} /><br />
                 <input placeholder="Price" type="number" onChange={handleEditPriceChange} value={editPrice} /><br />
+                <input placeholder="Purchase Link" type="text" onChange={handleEditPurchaseChange} value={editPurchase}/><br/>
                 <input className="btn btn-outline-secondary submitbutton" type="submit" value="submit Book" />
             </form>
         </ReactModal>
