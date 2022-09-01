@@ -35,7 +35,7 @@ const Book = ({ book, handleDelete, handleEdit }) => {
            
           
    
-      <ReactModal isOpen={showSynopsisModal}>
+      <ReactModal className="editModal" isOpen={showSynopsisModal}>
         <div>
           Genre: {book.genre}<br />
           Synopsis: {book.synopsis}<br />
@@ -44,14 +44,14 @@ const Book = ({ book, handleDelete, handleEdit }) => {
             {book.audio ? 
             
               <div><p>Yes</p> 
-              <button id="media"><a href={book.link}>click for audible</a></button></div>
+              <button className="btn btn-outline-secondary" id="media"><a href={book.link}>click for audible</a></button></div>
             : <p>No</p>}
              
           </details>
           Book price: ${book.price}<br />
-          <div><button id="media"><a href={book.purchase}>click to purchase</a></button></div>
+          <div><button id="media" className="btn btn-outline-secondary"><a href={book.purchase}>click to purchase</a></button></div>
         </div>
-        <button onClick={()=>{ setShowSynopsisModal(false)}}>close</button>
+        <button className="btn btn-outline-secondary" onClick={()=>{ setShowSynopsisModal(false)}}>close</button>
       </ReactModal>
      
     </>
