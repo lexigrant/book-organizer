@@ -68,6 +68,7 @@ li{
   border: 2px solid #b1c8ce;
   color:#b1c8ce;
 }
+
 input{
   border-radius: 25px;
   padding:5px;
@@ -101,14 +102,23 @@ main{
   display: flex;
   /* margin: 5px; */
 }
-.card {
-  /* display: flex;
-  flex-wrap: column wrap;
-  justify-content: center; */
-  /* height: 15rem !important;
-  width: 40rem !important; */
-  /* max-height: max-content !important; */
+.carouselButton {
+  border: 1px solid;
+  background-color: #242e42;
+  color: aliceblue;
+  padding: 8px;
+  height: 5%;
+  border-radius: 20%;
+  align-self: center;
+  /* margin: 10px; */
 }
+.previous{
+ 
+}
+.forward {
+
+}
+
 
 /* edit form */
 

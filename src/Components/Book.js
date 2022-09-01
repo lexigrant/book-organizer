@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { Card, Container, Col, Button } from "react-bootstrap"
 import ReactModal from "react-modal"
+import { Carousel } from "react-bootstrap"
 
 
 
@@ -13,8 +14,8 @@ const Book = ({ book, handleDelete, handleEdit }) => {
     
           
           
-          <Card className="card m-3" style={{width:'18rem'}}>  
-            <p key={book._id}>
+          <Card className="card m-2" style={{width:'18rem'}}>  
+            <span key={book._id}>
               <Card.Title style={{height:"80px", marginTop:"20px"}}>{book.title}<br /></Card.Title>
               <Card.Img variant="top" src={book.image} style={{height:"300px"}}/><br />
               <Card.Body>
@@ -28,12 +29,12 @@ const Book = ({ book, handleDelete, handleEdit }) => {
                 handleEdit(book)
               }}>Edit</Button>
               </Card.Body>
-            </p>
+            </span>
             </Card>
             
            
           
-    
+   
       <ReactModal isOpen={showSynopsisModal}>
         <div>
           Genre: {book.genre}<br />
@@ -50,8 +51,9 @@ const Book = ({ book, handleDelete, handleEdit }) => {
           </details>
           Book price: ${book.price}<br />
         </div>
-        <button onClick={()=>{ setShowSynopsisModal(false)}}> close </button>
+        <button onClick={()=>{ setShowSynopsisModal(false)}}>close</button>
       </ReactModal>
+     
     </>
   )
 
