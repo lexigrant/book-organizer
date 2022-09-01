@@ -23,7 +23,7 @@ const Book = ({ book, handleDelete, handleEdit }) => {
                  setShowSynopsisModal(true)
               }}>Book Information</Button>
               <Button className="one" onClick={() => {
-                handleDelete(book)
+                if(window.confirm("Are you sure you would like to delete this book?")){handleDelete(book)}
               }}>Delete</Button>
               <Button className="one" onClick={() => {
                 handleEdit(book)
