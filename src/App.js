@@ -19,7 +19,7 @@ const App = () => {
   const [activeCategory, setActiveCategory] = useState("")
   const [pageIndex, setPageIndex] = useState(0)
 
-  const pageSize = 6
+  const pageSize = 8
 
 
 
@@ -54,7 +54,9 @@ const App = () => {
   const pagesToSkip = pageIndex * pageSize
   return (
     <main>
+      <div className="stickyHeader">
       <h1>Book Organizer</h1>
+      </div>
       <NewBook refetchBooks={refetchBooks} />
       <section>
         <h2>Books Added</h2>
@@ -96,6 +98,9 @@ const App = () => {
               <button className="carouselButton previous" onClick={() => {
                 pageIndex > 0 && setPageIndex(pageIndex - 1)
               }}>Previous</button>
+               <button className="carouselButton forward" onClick={()=> {
+                pageIndex < Math.floor( filteredBooks.length / pageSize ) && setPageIndex(pageIndex + 1)
+              }}>Next</button>
             </div>
             <div className="container">
               <div className="row justify-content-center" >
@@ -108,11 +113,6 @@ const App = () => {
                   )
                 })}
               </div>
-            </div>
-            <div className="carousel">
-              <button className="carouselButton forward" onClick={()=> {
-                pageIndex < Math.floor( filteredBooks.length / pageSize ) && setPageIndex(pageIndex + 1)
-              }}>Next</button>
             </div>
           </div>
         </ul>
