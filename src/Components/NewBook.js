@@ -2,6 +2,7 @@ import React from "react"
 import { useState } from "react"
 import axios from "axios"
 import 'bootstrap/dist/css/bootstrap.min.css';
+const API_URL = process.env.REACT_APP_API_URL
 
 const NewBook = ({refetchBooks}) => {
 
@@ -44,7 +45,7 @@ const NewBook = ({refetchBooks}) => {
     const handleNewBookSubmit = (event) => {
         event.preventDefault()
         axios.post(
-            "http://localhost:3003/books",
+            `${API_URL}/books`,
             {
                 title:newTitle,
                 image:newImage, 

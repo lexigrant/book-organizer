@@ -7,7 +7,7 @@ import NewBook from './Components/NewBook'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import EditBook from './Components/EditBook'
 import Dropdown from 'react-bootstrap/Dropdown'
-import { Carousel } from "react-bootstrap"
+
 // require('dotenv').config()
 const API_URL = process.env.REACT_APP_API_URL
 
@@ -17,11 +17,11 @@ const App = () => {
   const [bookToEdit, setBookToEdit] = useState(undefined)
   const [showEditModal, setShowEditModal] = useState(false)
   const [activeCategory, setActiveCategory] = useState("")
-  const [index, setIndex] = useState(0)
+  const [pageIndex, setPageIndex] = useState(0)
 
-  const handleSelect = (selectIndex) => {
-    setIndex(selectIndex)
-  }
+  const pageSize = 6
+
+
 
 
   const refetchBooks = () => {
@@ -31,7 +31,7 @@ const App = () => {
       })
   }
   const handleDelete = (bookData) => {
-    axios.delete(`${API_URL}/${bookData._id}`)
+    axios.delete(`${API_URL}/books/${bookData._id}`)
       .then(() => {
         refetchBooks()
       })
@@ -50,6 +50,8 @@ const App = () => {
       })
   }, [])
 
+  const filteredBooks = activeCategory ? books.filter(book=> book.genre === activeCategory) : books
+  const pagesToSkip = pageIndex * pageSize
   return (
     <main>
       <h1>Book Organizer</h1>
@@ -57,7 +59,7 @@ const App = () => {
       <section>
         <h2>Books Added</h2>
         <Dropdown>
-          <Dropdown.Toggle variant="secondary">Categories</Dropdown.Toggle>
+          <Dropdown.Toggle variant="secondary" className="categoryButton">Categories</Dropdown.Toggle>
           <Dropdown.Menu>
             <Dropdown.Item className="dropdown-item" href="#" onClick={() => {
               setActiveCategory("")
@@ -89,19 +91,30 @@ const App = () => {
           </Dropdown.Menu>
         </Dropdown>
         <ul>
-          <Carousel activeIndex={index} >
+          <div style={{ zIndex: 0 }}>
+            <div className="carousel">
+              <button className="carouselButton previous" onClick={() => {
+                pageIndex > 0 && setPageIndex(pageIndex - 1)
+              }}>Previous</button>
+            </div>
             <div className="container">
-              <div className="row justify-content-center">
-                {books.slice(0,6).map((book) => {
+              <div className="row justify-content-center" >
+                {filteredBooks.slice(pagesToSkip, pagesToSkip + pageSize).map((book) => {
                   return (
                     // if book.genre === activeCategory then make the book
                     // else dont
-                    book.genre === activeCategory || activeCategory === "" ? <Book book={book} handleDelete={handleDelete} handleEdit={handleEdit} /> : undefined
+                    <Book book={book} handleDelete={handleDelete} handleEdit={handleEdit} />
+                    // book.genre === activeCategory || activeCategory === "" ? <Book book={book} handleDelete={handleDelete} handleEdit={handleEdit} /> : undefined
                   )
                 })}
               </div>
             </div>
-          </Carousel>
+            <div className="carousel">
+              <button className="carouselButton forward" onClick={()=> {
+                pageIndex < Math.floor( filteredBooks.length / pageSize ) && setPageIndex(pageIndex + 1)
+              }}>Next</button>
+            </div>
+          </div>
         </ul>
         {bookToEdit ? <EditBook refetchBooks={refetchBooks} bookToEdit={bookToEdit} showEditModal={showEditModal} closeEditModal={closeEditModal} /> : undefined}
       </section>

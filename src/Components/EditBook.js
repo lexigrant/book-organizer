@@ -3,6 +3,7 @@ import { useState, useEffect } from "react"
 import axios from "axios"
 import ReactModal from 'react-modal';
 import 'bootstrap/dist/css/bootstrap.min.css';
+const API_URL = process.env.REACT_APP_API_URL
 
 const EditBook = ({refetchBooks, bookToEdit, showEditModal, closeEditModal}) => {
 
@@ -48,7 +49,7 @@ const EditBook = ({refetchBooks, bookToEdit, showEditModal, closeEditModal}) => 
     const handleEditBookSubmit = (event) => {
         event.preventDefault()
         axios.put(
-            `http://localhost:3003/books/${editId}`,
+            `${API_URL}/books/${editId}`,
             {
                 title: editTitle,
                 image: editImage, 
@@ -65,7 +66,6 @@ const EditBook = ({refetchBooks, bookToEdit, showEditModal, closeEditModal}) => 
     }
 
     const populatedEditForm = (bookData) => {
-        console.log("hey", bookData)
             setEditTitle(bookData.title)
             setEditImage(bookData.image) 
             setEditSynopsis(bookData.synopsis)
