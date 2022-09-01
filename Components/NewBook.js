@@ -4,7 +4,7 @@ import axios from "axios"
 import 'bootstrap/dist/css/bootstrap.min.css';
 const API_URL = process.env.REACT_APP_API_URL
 
-const NewBook = ({refetchBooks}) => {
+const NewBook = ({ refetchBooks }) => {
 
     const [newTitle, setNewTitle] = useState("")
     const [newImage, setNewImage] = useState("")
@@ -52,16 +52,16 @@ const NewBook = ({refetchBooks}) => {
         axios.post(
             `${API_URL}/books`,
             {
-                title:newTitle,
-                image:newImage, 
-                synopsis:newSynopsis,
-                genre:newGenre,
-                audio:newAudio,
-                link:newLink,
-                purchase:newPurchase,
-                price:newPrice
+                title: newTitle,
+                image: newImage,
+                synopsis: newSynopsis,
+                genre: newGenre,
+                audio: newAudio,
+                link: newLink,
+                purchase: newPurchase,
+                price: newPrice
             }
-        ).then(()=> {
+        ).then(() => {
             setNewTitle("")
             setNewImage("")
             setNewSynopsis("")
@@ -81,15 +81,15 @@ const NewBook = ({refetchBooks}) => {
                 <input placeholder="Title" type="text" onChange={handleNewTitleChange} value={newTitle} /><br />
                 <input placeholder="Image" type="text" onChange={handleNewImageChange} value={newImage} /><br />
                 <input placeholder="Synopsis" type="text" onChange={handleNewSynopsisChange} value={newSynopsis} /><br />
-                <input placeholder="Genre" type="text" onChange={handleNewGenreChange} value={newGenre}/><br />
-                <h2 className="audiobook">Available as an AudioBook</h2> <input type="checkbox" className="checked" defaultChecked={false} onChange={handleNewAudioChange} value={newAudio}/><br />
-                <input placeholder="Link" type="text" onChange={handleNewLinkChange} value={newLink}/><br />
-                <input placeholder="Price" type="number" onChange={handleNewPriceChange} value={newPrice}/><br />
-                <input placeholder="Purchase Link" type="text" onChange={handleNewPurchaseChange} value={newPurchase}/><br/>
+                <input placeholder="Genre" type="text" onChange={handleNewGenreChange} value={newGenre} /><br />
+                <h2 className="audiobook">Available as an AudioBook</h2> <input type="checkbox" className="checked" defaultChecked={false} onChange={handleNewAudioChange} value={newAudio} /><br />
+                <input placeholder="Link" type="text" onChange={handleNewLinkChange} value={newLink} /><br />
+                <input placeholder="Price" type="number" onChange={handleNewPriceChange} value={newPrice} /><br />
+                <input placeholder="Purchase Link" type="text" onChange={handleNewPurchaseChange} value={newPurchase} /><br />
                 <input className="btn btn-outline-secondary submitbutton" type="submit" value="submit Book" />
             </form>
         </section>
-    )
+                    )
 }
 
 export default NewBook
