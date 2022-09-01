@@ -88,8 +88,8 @@ const EditBook = ({refetchBooks, bookToEdit, showEditModal, closeEditModal}) => 
     }, [bookToEdit])
 
     return (
-        <ReactModal isOpen={showEditModal}>
-          <p>edit here</p>
+        <ReactModal className="editModal" isOpen={showEditModal}>
+          <p>Edit Here</p>
           <button className="btn btn-outline-secondary submitbutton" onClick={() => {
             closeEditModal()
           }}>Exit</button>
@@ -99,7 +99,7 @@ const EditBook = ({refetchBooks, bookToEdit, showEditModal, closeEditModal}) => 
                 <input placeholder="Image" type="text" onChange={handleEditImageChange} value={editImage} /><br />
                 <input placeholder="Synopsis" type="text" onChange={handleEditSynopsisChange} value={editSynopsis} /><br />
                 <input placeholder="Genre" type="text" onChange={handleEditGenreChange} value={editGenre} /><br />
-                Available as an AudioBook <input type="checkbox" defaultChecked={false} onChange={handleEditAudioChange} value={editAudio} /><br />
+                Available as an AudioBook <input type="checkbox" className="checked" defaultChecked={false} onChange={handleEditAudioChange} value={editAudio} /><br />
                 <input placeholder="Link" type="text" onChange={handleEditLinkChange} value={editLink} /><br />
                 <input placeholder="Price" type="number" onChange={handleEditPriceChange} value={editPrice} /><br />
                 <input placeholder="Purchase Link" type="text" onChange={handleEditPurchaseChange} value={editPurchase}/><br/>

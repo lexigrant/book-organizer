@@ -22,7 +22,18 @@ const App = () => {
   const pageSize = 8
 
 
-
+const Carousel = () => {
+  return(
+    <div className="carousel">
+    <button className="carouselButton previous" onClick={() => {
+      pageIndex > 0 && setPageIndex(pageIndex - 1)
+    }}>Previous</button>
+     <button className="carouselButton forward" onClick={()=> {
+      pageIndex < Math.floor( filteredBooks.length / pageSize ) && setPageIndex(pageIndex + 1)
+    }}>Next</button>
+  </div>
+  )
+}
 
   const refetchBooks = () => {
     axios.get(`${API_URL}/books`)
@@ -65,43 +76,45 @@ const App = () => {
           <Dropdown.Menu>
             <Dropdown.Item className="dropdown-item" href="#" onClick={() => {
               setActiveCategory("")
+              setPageIndex(0)
             }}>All</Dropdown.Item>
             <Dropdown.Item className="dropdown-item" href="#" onClick={() => {
               setActiveCategory("Fantasy")
+              setPageIndex(0)
             }}>Fantasy</Dropdown.Item>
             <Dropdown.Item className="dropdown-item" href="#" onClick={() => {
               setActiveCategory("Fiction")
+              setPageIndex(0)
             }}>Fiction</Dropdown.Item>
             <Dropdown.Item className="dropdown-item" href="#" onClick={() => {
               setActiveCategory("Literary Fiction")
+              setPageIndex(0)
             }}>Literary Fiction</Dropdown.Item>
             <Dropdown.Item className="dropdown-item" href="#" onClick={() => {
               setActiveCategory("Romance")
+              setPageIndex(0)
             }}>Romance</Dropdown.Item>
             <Dropdown.Item className="dropdown-item" href="#" onClick={() => {
               setActiveCategory("Self-Help")
+              setPageIndex(0)
             }}>Self-Help</Dropdown.Item>
             <Dropdown.Item className="dropdown-item" href="#" onClick={() => {
               setActiveCategory("Science Fiction")
+              setPageIndex(0)
             }}>Science Fiction</Dropdown.Item>
             <Dropdown.Item className="dropdown-item" href="#" onClick={() => {
               setActiveCategory("Spiritual")
+              setPageIndex(0)
             }}>Spiritual</Dropdown.Item>
             <Dropdown.Item className="dropdown-item" href="#" onClick={() => {
               setActiveCategory("Thriller")
+              setPageIndex(0)
             }}>Thriller</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
         <ul>
           <div style={{ zIndex: 0 }}>
-            <div className="carousel">
-              <button className="carouselButton previous" onClick={() => {
-                pageIndex > 0 && setPageIndex(pageIndex - 1)
-              }}>Previous</button>
-               <button className="carouselButton forward" onClick={()=> {
-                pageIndex < Math.floor( filteredBooks.length / pageSize ) && setPageIndex(pageIndex + 1)
-              }}>Next</button>
-            </div>
+           <Carousel/>
             <div className="container">
               <div className="row justify-content-center" >
                 {filteredBooks.slice(pagesToSkip, pagesToSkip + pageSize).map((book) => {
@@ -115,6 +128,7 @@ const App = () => {
               </div>
             </div>
           </div>
+          <Carousel/>
         </ul>
         {bookToEdit ? <EditBook refetchBooks={refetchBooks} bookToEdit={bookToEdit} showEditModal={showEditModal} closeEditModal={closeEditModal} /> : undefined}
       </section>
